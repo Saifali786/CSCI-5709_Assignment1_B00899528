@@ -10,6 +10,7 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
+    console.log(password);
     const formValue = {
       email,
       password,
@@ -26,13 +27,16 @@ export const Login = () => {
 
   const validateForm = (data) => {
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/; //Reference : https://regexr.com/3e48o
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; //Reference: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     const errorMessage = {};
     if (data.email === "" || emailRegex.test(data.email) == false) {
       errorFlag = 1;
       errorMessage.email = "Email is not valid";
-    } else if (data.password.length < 8) {
+    } else if (passwordRegex.test(data.password) == false) {
       errorFlag = 1;
-      errorMessage.password = "Password must be more than 8 characters";
+      errorMessage.password =
+        "Password must be more than 8 characters, at least one uppearcase and lowercase letter and a number";
     } else {
       errorFlag = 0;
     }
@@ -42,7 +46,7 @@ export const Login = () => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card style={{ width: "30rem", height: "25rem" }}>
+        <Card style={{ width: "30rem", height: "26rem" }}>
           <Card.Body>
             <h2 className="text-center mb-4">Login</h2>
             <Form onSubmit={handleSubmit}>
@@ -58,7 +62,10 @@ export const Login = () => {
                     required
                   />
                 </Form.Group>
-                <div className="error" style={{ color: "red" }}>
+                <div
+                  className="error"
+                  style={{ color: "red", fontSize: "14px" }}
+                >
                   {" "}
                   {error.email}{" "}
                 </div>
@@ -76,7 +83,10 @@ export const Login = () => {
                   />
                 </Form.Group>
                 {error && (
-                  <div className="error" style={{ color: "red" }}>
+                  <div
+                    className="error"
+                    style={{ color: "red", fontSize: "14px" }}
+                  >
                     {" "}
                     {error.password}{" "}
                   </div>
