@@ -25,8 +25,9 @@ export const Login = () => {
   };
 
   const validateForm = (data) => {
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/; //Reference : https://regexr.com/3e48o
     const errorMessage = {};
-    if (data.email === "") {
+    if (data.email === "" || emailRegex.test(data.email) == false) {
       errorFlag = 1;
       errorMessage.email = "Email is not valid";
     } else if (data.password.length < 8) {
