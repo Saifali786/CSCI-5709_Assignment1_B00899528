@@ -54,6 +54,7 @@ export const Login = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onSubmit={handleSubmit}
+                    required
                   />
                 </Form.Group>
                 <div className="error" style={{ color: "red" }}>
