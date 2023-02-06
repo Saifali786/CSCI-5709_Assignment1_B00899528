@@ -36,7 +36,7 @@ export const Login = () => {
     } else if (passwordRegex.test(data.password) == false) {
       errorFlag = 1;
       errorMessage.password =
-        "Password must be more than 8 characters, must have at least one uppercase and lowercase letter and a number";
+        "Password must be more than 8 characters, must have at least one uppercase letter, one lowercase letter, one number and one special character";
     } else {
       errorFlag = 0;
     }
@@ -46,7 +46,7 @@ export const Login = () => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card style={{ width: "30rem", height: "26rem" }}>
+        <Card style={{ width: "30rem", height: "27rem" }}>
           <Card.Body>
             <h2 className="text-center mb-4">Login</h2>
             <Form onSubmit={handleSubmit}>
