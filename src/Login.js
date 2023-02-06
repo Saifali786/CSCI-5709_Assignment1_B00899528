@@ -36,7 +36,7 @@ export const Login = () => {
     } else if (passwordRegex.test(data.password) == false) {
       errorFlag = 1;
       errorMessage.password =
-        "Password must be more than 8 characters, at least one uppearcase and lowercase letter and a number";
+        "Password must be more than 8 characters, must have at least one uppercase and lowercase letter and a number";
     } else {
       errorFlag = 0;
     }
