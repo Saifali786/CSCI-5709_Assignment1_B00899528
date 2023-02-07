@@ -15,7 +15,11 @@ export const Login = () => {
       password,
     };
     setError(validateForm(formValue));
-    if (errorFlag === 0) {
+    if (
+      errorFlag === 0 &&
+      email === "saifaliprasla786@gmail.com" &&
+      password === "M@zacar101117"
+    ) {
       alert("User authenticated");
       setEmail("");
       setPassword("");
